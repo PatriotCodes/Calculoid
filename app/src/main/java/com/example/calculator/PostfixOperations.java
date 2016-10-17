@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 
@@ -38,7 +40,7 @@ public class PostfixOperations {
         StringBuilder tmpStr = new StringBuilder();
         StringBuilder output = new StringBuilder();
         int i = 0;
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         stack.push('M');
         boolean isNegative = false;
         while (i < input.length()) { // Parse input symbol by symbol
@@ -85,7 +87,7 @@ public class PostfixOperations {
                     inputStr.setText(tmpStr);
                     break;
                 }
-                if (!stack.empty()) {
+                if (!stack.isEmpty()) {
                     while (getOpPriority(input.charAt(i)) <= getOpPriority(stack.peek())) {
                         output.append(stack.pop());
                     }
