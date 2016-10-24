@@ -25,7 +25,6 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
 
 
 public class PostfixOperations {
@@ -112,7 +111,7 @@ public class PostfixOperations {
     private static StringBuilder performOperations(CharSequence input) {
         BigDecimal x, y, a, valB;
         Double val;
-        Stack<BigDecimal> stack = new Stack<>();
+        Deque<BigDecimal> stack = new ArrayDeque<>();
         StringBuilder output = new StringBuilder();
         StringBuilder value = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
