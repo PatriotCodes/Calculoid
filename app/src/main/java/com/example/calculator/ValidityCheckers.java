@@ -27,8 +27,8 @@ public class ValidityCheckers {
         output.append(input);
         int c = 1;
         if (output.length() != 0) {
-            if (input.charAt(input.length() - c) == '(' || PostfixOperations.checkOperatorCoins(input.charAt(input.length() - c))) {
-                while (input.charAt(input.length() - c) == '(' || PostfixOperations.checkOperatorCoins(input.charAt(input.length() - c))) {
+            if (input.charAt(input.length() - c) == '(' || checkOperatorCoins(input.charAt(input.length() - c))) {
+                while (input.charAt(input.length() - c) == '(' || checkOperatorCoins(input.charAt(input.length() - c))) {
                     c++;
                     if (c > input.length()) {
                         break;
@@ -73,7 +73,7 @@ public class ValidityCheckers {
             return true;
         }
         if (tmp.length() == 1) {
-            if (PostfixOperations.checkOperatorCoins(tmp.charAt(tmp.length() - 1))) {
+            if (checkOperatorCoins(tmp.charAt(tmp.length() - 1))) {
                 return true;
             }
         }
@@ -99,6 +99,28 @@ public class ValidityCheckers {
                         return true;
                     }
                 }
+            }
+        }
+        return false;
+    }
+
+    public static boolean dotAlreadySet(String input) {
+        for (int i = input.length()- 1; i >= 0; i--) {
+            if (input.charAt(i) == '.') {
+                return true;
+            }
+            if (checkOperatorCoins(input.charAt(i))) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkOperatorCoins(char symbol) {
+        char[] operators = {'+', '-', '*', '/', '^'};
+        for (char operator : operators) {
+            if (operator == symbol) {
+                return true;
             }
         }
         return false;

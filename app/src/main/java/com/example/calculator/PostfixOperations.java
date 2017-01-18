@@ -79,7 +79,7 @@ public class PostfixOperations {
                 }
                 stack.pop();
             }
-            if (checkOperatorCoins(input.charAt(i))) {
+            if (ValidityCheckers.checkOperatorCoins(input.charAt(i))) {
                 if (i == (input.length() - 1)) {
                     tmpStr.append(inputStr.getText().toString().trim());
                     tmpStr.setLength(tmpStr.length() - 1);
@@ -115,7 +115,7 @@ public class PostfixOperations {
         StringBuilder output = new StringBuilder();
         StringBuilder value = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
-            if (checkOperatorCoins(input.charAt(i))) {
+            if (ValidityCheckers.checkOperatorCoins(input.charAt(i))) {
                 if (input.charAt(i) == '+') {
                     y = stack.pop();
                     x = stack.pop();
@@ -172,16 +172,6 @@ public class PostfixOperations {
         df.setGroupingUsed(false);
         output.append(df.format(stack.pop().stripTrailingZeros()));
         return output;
-    }
-
-    public static boolean checkOperatorCoins(char symbol) {
-        char[] operators = {'+', '-', '*', '/', '^'};
-        for (char operator : operators) {
-            if (operator == symbol) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private static int getOpPriority(char symbol) {

@@ -291,7 +291,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                     Clear();
                 }
                 if (inputStr.length() >= 1) {
-                    if (inputStr.getText().charAt(inputStr.length() - 1) == '.') {
+                    if (ValidityCheckers.dotAlreadySet(inputStr.getText().toString())) {
                         break;
                     }
                     if (inputStr.getText().charAt(inputStr.length() - 1) == ')') {
@@ -487,7 +487,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                                 bracketSet = false;
                             }
                         }
-                        if (PostfixOperations.checkOperatorCoins(tmpStr.charAt(tmpStr.length() - 2))) {
+                        if (ValidityCheckers.checkOperatorCoins(tmpStr.charAt(tmpStr.length() - 2))) {
                             firstBracket = true;
                         }
                         if (Character.isDigit(tmpStr.charAt(tmpStr.length() - 1))) {
