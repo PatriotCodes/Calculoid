@@ -125,4 +125,18 @@ public class ValidityCheckers {
         }
         return false;
     }
+
+    public static int digitsBeforeFPoint(String input) {
+        int digits = 0;
+        for (int i = input.length()- 1; i >= 0; i--) {
+            if (input.charAt(i) == '.') {
+                return digits;
+            }
+            if (checkOperatorCoins(input.charAt(i))) {
+                return digits;
+            }
+            digits++;
+        }
+        return digits;
+    }
 }

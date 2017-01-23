@@ -30,7 +30,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainScreen extends Activity implements View.OnClickListener {
@@ -43,16 +42,14 @@ public class MainScreen extends Activity implements View.OnClickListener {
     HorizontalScrollView inputScroll;
     boolean firstBracket = true, bracketSet = false;
     StringBuilder tmpStr = new StringBuilder();
-    String appVersion = "alpha build v0.41";
-    private static final int vibrationIntensity = 60;
+    private static final int VIBRATION_INTENSITY = 60;
+    private static final int MAX_DIGITS_AFTER_FPOINT = 10;  // TODO: implement
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         vibe = (Vibrator) MainScreen.this.getSystemService(Context.VIBRATOR_SERVICE);
-        Toast toast = Toast.makeText(getApplicationContext(), appVersion, Toast.LENGTH_SHORT);
-        toast.show();
 
         one = (Button) findViewById(R.id.button1);
         two = (Button) findViewById(R.id.button2);
@@ -137,7 +134,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        vibe.vibrate(vibrationIntensity);
+        vibe.vibrate(VIBRATION_INTENSITY);
         tmpStr.setLength(0);
         inputScroll.postDelayed(new Runnable() {
             @Override
@@ -149,6 +146,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
             case R.id.button1:
                 if (outputStr.length() != 0) {
                     Clear();
+                }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
                 }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
@@ -164,6 +164,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 if (outputStr.length() != 0) {
                     Clear();
                 }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
+                }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
                         inputStr.append("*");
@@ -177,6 +180,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
             case R.id.button3:
                 if (outputStr.length() != 0) {
                     Clear();
+                }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
                 }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
@@ -192,6 +198,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 if (outputStr.length() != 0) {
                     Clear();
                 }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
+                }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
                         inputStr.append("*");
@@ -206,6 +215,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 if (outputStr.length() != 0) {
                     Clear();
                 }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
+                }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
                         inputStr.append("*");
@@ -219,6 +231,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
             case R.id.button6:
                 if (outputStr.length() != 0) {
                     Clear();
+                }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
                 }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
@@ -239,6 +254,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
                         inputStr.append("*");
                     }
                 }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
+                }
                 inputStr.append("7");
                 if (bracketSet) {
                     firstBracket = false;
@@ -247,6 +265,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
             case R.id.button8:
                 if (outputStr.length() != 0) {
                     Clear();
+                }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
                 }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
@@ -262,6 +283,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 if (outputStr.length() != 0) {
                     Clear();
                 }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
+                }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
                         inputStr.append("*");
@@ -275,6 +299,9 @@ public class MainScreen extends Activity implements View.OnClickListener {
             case R.id.button0:
                 if (outputStr.length() != 0) {
                     Clear();
+                }
+                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                    break;
                 }
                 if (inputStr.length() != 0) {
                     if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
