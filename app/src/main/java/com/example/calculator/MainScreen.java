@@ -144,104 +144,34 @@ public class MainScreen extends Activity implements View.OnClickListener {
         }, 100L);
         switch (v.getId()) {
             case R.id.button1:
-                if (canInputDigit()) {
-                    inputStr.append("1");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("1");
                 break;
             case R.id.button2:
-                if (canInputDigit()) {
-                    inputStr.append("2");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("2");
                 break;
             case R.id.button3:
-                if (canInputDigit()) {
-                    inputStr.append("3");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("3");
                 break;
             case R.id.button4:
-                if (canInputDigit()) {
-                    inputStr.append("4");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("4");
                 break;
             case R.id.button5:
-                if (canInputDigit()) {
-                    inputStr.append("5");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("5");
                 break;
             case R.id.button6:
-                if (canInputDigit()) {
-                    inputStr.append("6");
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                } else {
-                    break;
-                }
+                inputDigit("6");
                 break;
             case R.id.button7:
-                if (canInputDigit()) {
-                    inputStr.append("7");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("7");
                 break;
             case R.id.button8:
-                if (canInputDigit()) {
-                    inputStr.append("8");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("8");
                 break;
             case R.id.button9:
-                if (canInputDigit()) {
-                    inputStr.append("9");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("9");
                 break;
             case R.id.button0:
-                if (canInputDigit()) {
-                    inputStr.append("0");
-                } else {
-                    break;
-                }
-                if (bracketSet) {
-                    firstBracket = false;
-                }
+                inputDigit("0");
                 break;
             case R.id.buttonDot:
                 if (outputStr.length() != 0) {
@@ -466,19 +396,22 @@ public class MainScreen extends Activity implements View.OnClickListener {
         }
     }
 
-    private boolean canInputDigit() {
+    private void inputDigit(String digit) {
         if (outputStr.length() != 0) {
             Clear();
         }
         if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
-            return false;
+            return;
         }
         if (inputStr.length() != 0) {
             if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
                 inputStr.append("*");
             }
         }
-        return true;
+        inputStr.append(digit);
+        if (bracketSet) {
+            firstBracket = false;
+        }
     }
 
     public boolean checkCloseBracketCoins(char symbol) {
