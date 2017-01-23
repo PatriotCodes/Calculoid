@@ -43,7 +43,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
     boolean firstBracket = true, bracketSet = false;
     StringBuilder tmpStr = new StringBuilder();
     private static final int VIBRATION_INTENSITY = 60;
-    private static final int MAX_DIGITS_AFTER_FPOINT = 10;  // TODO: implement
+    private static final int MAX_DIGITS_AFTER_FPOINT = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,171 +144,101 @@ public class MainScreen extends Activity implements View.OnClickListener {
         }, 100L);
         switch (v.getId()) {
             case R.id.button1:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("1");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("1");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button2:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("2");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("2");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button3:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("3");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("3");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button4:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("4");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("4");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button5:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("5");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("5");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button6:
-                if (outputStr.length() != 0) {
-                    Clear();
+                if (canInputDigit()) {
+                    inputStr.append("6");
                 }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
-                    break;
-                }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("6");
                 if (bracketSet) {
                     firstBracket = false;
+                } else {
+                    break;
                 }
                 break;
             case R.id.button7:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("7");
+                } else {
                     break;
                 }
-                inputStr.append("7");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button8:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("8");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("8");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button9:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("9");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("9");
                 if (bracketSet) {
                     firstBracket = false;
                 }
                 break;
             case R.id.button0:
-                if (outputStr.length() != 0) {
-                    Clear();
-                }
-                if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+                if (canInputDigit()) {
+                    inputStr.append("0");
+                } else {
                     break;
                 }
-                if (inputStr.length() != 0) {
-                    if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
-                        inputStr.append("*");
-                    }
-                }
-                inputStr.append("0");
                 if (bracketSet) {
                     firstBracket = false;
                 }
@@ -534,6 +464,21 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 Clear();
                 break;
         }
+    }
+
+    private boolean canInputDigit() {
+        if (outputStr.length() != 0) {
+            Clear();
+        }
+        if (ValidityCheckers.digitsBeforeFPoint(inputStr.getText().toString()) == MAX_DIGITS_AFTER_FPOINT) {
+            return false;
+        }
+        if (inputStr.length() != 0) {
+            if (inputStr.getText().toString().trim().charAt(inputStr.length() - 1) == ')') {
+                inputStr.append("*");
+            }
+        }
+        return true;
     }
 
     public boolean checkCloseBracketCoins(char symbol) {
