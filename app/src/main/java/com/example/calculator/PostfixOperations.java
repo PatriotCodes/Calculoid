@@ -29,7 +29,7 @@ import java.util.Deque;
 
 public class PostfixOperations {
 
-    private static final int MaxFractionDig = 10;
+    private static final int MAX_FRACTION_DIG = 10;
 
     public static String countExpression(TextView inputStr) {
         return PostfixOperations.performOperations(PostfixOperations.convertToPostfix(ValidityCheckers.checkBrackets(inputStr.getText().toString()), inputStr)).toString();
@@ -167,7 +167,7 @@ public class PostfixOperations {
             value.delete(0, value.length());
         }
         DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(MaxFractionDig);
+        df.setMaximumFractionDigits(MAX_FRACTION_DIG);
         df.setMinimumFractionDigits(0);
         df.setGroupingUsed(false);
         output.append(df.format(stack.pop().stripTrailingZeros()));

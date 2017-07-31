@@ -44,6 +44,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
     StringBuilder tmpStr = new StringBuilder();
     private static final int VIBRATION_INTENSITY = 60;
     private static final int MAX_DIGITS_AFTER_FPOINT = 10;
+    private MemoryOperations memory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +105,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
         erase.setOnClickListener(this);
         brackets.setOnClickListener(this);
 
+        memory = new MemoryOperations();
         mAdd.setOnClickListener(this);
         mSub.setOnClickListener(this);
         mReg.setOnClickListener(this);
@@ -143,6 +145,11 @@ public class MainScreen extends Activity implements View.OnClickListener {
             }
         }, 100L);
         switch (v.getId()) {
+
+            /*
+                Digit buttons
+            */
+
             case R.id.button1:
                 inputDigit("1");
                 break;
@@ -173,6 +180,11 @@ public class MainScreen extends Activity implements View.OnClickListener {
             case R.id.button0:
                 inputDigit("0");
                 break;
+
+            /*
+                Operation buttons
+            */
+
             case R.id.buttonDot:
                 if (outputStr.length() != 0) {
                     Clear();
@@ -334,7 +346,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                     }
                 }
                 break;
-            case R.id.brackets:   // BRACKETS BUTTON
+            case R.id.brackets:
                 if (outputStr.length() != 0) {
                     Clear();
                 }
@@ -357,7 +369,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                     }
                 }
                 break;
-            case R.id.buttonErase:  // ERASE BUTTON
+            case R.id.buttonErase:
                 if (outputStr.length() != 0) {
                     Clear();
                 } else if (inputStr.length() != 0) {
@@ -392,6 +404,23 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 break;
             case R.id.buttonClear:
                 Clear();
+                break;
+
+            /*
+                Memory buttons
+            */
+
+            case R.id.buttonMAdd:
+                memory.addToMemory(outputStr.getText().toString());
+                break;
+            case R.id.buttonMSub:
+                memory.subFromMemory(outputStr.getText().toString());
+                break;
+            case R.id.buttonMReg:
+                outputStr.setText(getString(R.string.result_string, memory.printMemory()));
+                break;
+            case R.id.buttonMClear:
+                memory.clearMemory();
                 break;
         }
     }
