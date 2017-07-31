@@ -20,39 +20,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package com.example.calculator;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 
 public class MemoryOperations {
 
     private BigDecimal InMemory;
-    private static final int MAX_FRACTION_DIG = 10;
-    DecimalFormat df;
 
     public MemoryOperations() {
         InMemory = BigDecimal.ZERO;
-        df = new DecimalFormat();
-        df.setMaximumFractionDigits(MAX_FRACTION_DIG);
-        df.setMinimumFractionDigits(0);
-        df.setGroupingUsed(false);
     }
 
-    public void addToMemory(String number) {
+    public void addToMemory(String number) {    // TODO: check exponential numbers
         if (!number.isEmpty()) {
             StringBuilder tmp = new StringBuilder(number.trim());
-            tmp.delete(0, 1);
-            Double doubleValue = Double.valueOf(tmp.toString());
-            BigDecimal BDValue = BigDecimal.valueOf(doubleValue);
+            tmp.delete(0, 2);
+            BigDecimal BDValue = new BigDecimal(tmp.toString());
             InMemory = InMemory.add(BDValue);
         }
     }
 
-    public void subFromMemory(String number) {
+    public void subFromMemory(String number) {    // TODO: check exponential numbers
         if (!number.isEmpty()) {
             StringBuilder tmp = new StringBuilder(number.trim());
-            tmp.delete(0, 1);
-            Double doubleValue = Double.valueOf(tmp.toString());
-            BigDecimal BDValue = BigDecimal.valueOf(doubleValue);
+            tmp.delete(0, 2);
+            BigDecimal BDValue = new BigDecimal(tmp.toString());
             InMemory = InMemory.subtract(BDValue);
         }
     }

@@ -25,6 +25,8 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Formatter;
+import java.util.Locale;
 
 
 public class PostfixOperations {
@@ -48,8 +50,14 @@ public class PostfixOperations {
                 i++;
             }
             if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') { // цифру пихаем в вых. строку
-                while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') {
+                while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == 'e') {
                     output.append(input.charAt(i));
+                    if (input.charAt(i) == 'e') {
+                        i++;
+                        if (input.charAt(i) == '-' || input.charAt(i) == '+') {
+                            output.append(input.charAt(i));
+                        }
+                    }
                     i++;
                     if (i >= input.length()) {
                         break;
@@ -110,7 +118,6 @@ public class PostfixOperations {
 
     private static StringBuilder performOperations(CharSequence input) {
         BigDecimal x, y, a, valB;
-        Double val;
         Deque<BigDecimal> stack = new ArrayDeque<>();
         StringBuilder output = new StringBuilder();
         StringBuilder value = new StringBuilder();
@@ -156,8 +163,7 @@ public class PostfixOperations {
                     value.append(input.charAt(i));
                     i++;
                 }
-                val = Double.valueOf(value.toString()); /////////// CONVERT TO BIG DECIMAL
-                valB = BigDecimal.valueOf(val);
+                valB = new BigDecimal(value.toString());
                 if (input.charAt(i + 1) == '!') {
                     valB = valB.negate();
                     i++;
@@ -166,11 +172,20 @@ public class PostfixOperations {
             }
             value.delete(0, value.length());
         }
-        DecimalFormat df = new DecimalFormat();
+        DecimalFormat df = new DecimalFormat();                           // TODO: change E to e
         df.setMaximumFractionDigits(MAX_FRACTION_DIG);
         df.setMinimumFractionDigits(0);
         df.setGroupingUsed(false);
-        output.append(df.format(stack.pop().stripTrailingZeros()));
+        BigDecimal tmp = new BigDecimal(df.format(stack.pop().stripTrailingZeros()));
+        String[] splitter = tmp.toString().split("\\.");
+        if (splitter[0].length() > 9) {
+            Formatter formatter = new Formatter();
+            output.append(formatter.format(Locale.US, "%e", tmp));
+            String res = output.indexOf(".") < 0 ? output.toString() : output.toString().replaceAll("0*$", "").replaceAll("\\.$", "");
+            output = new StringBuilder(res);
+        } else {
+            output.append(tmp.toString());
+        }
         return output;
     }
 
