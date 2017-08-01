@@ -34,7 +34,7 @@ public class PostfixOperations {
     private static final int MAX_FRACTION_DIG = 10;
 
     public static String countExpression(TextView inputStr) {
-        return PostfixOperations.performOperations(PostfixOperations.convertToPostfix(ValidityCheckers.checkBrackets(inputStr.getText().toString()), inputStr)).toString();
+        return PostfixOperations.performOperations(PostfixOperations.convertToPostfix(ValidityCheckers.checkBrackets(inputStr.getText().toString()), inputStr));
     }
 
     private static StringBuilder convertToPostfix(CharSequence input, TextView inputStr) {
@@ -50,9 +50,9 @@ public class PostfixOperations {
                 i++;
             }
             if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') { // цифру пихаем в вых. строку
-                while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == 'e') {
+                while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == 'E') {
                     output.append(input.charAt(i));
-                    if (input.charAt(i) == 'e') {
+                    if (input.charAt(i) == 'E') {
                         i++;
                         if (input.charAt(i) == '-' || input.charAt(i) == '+') {
                             output.append(input.charAt(i));
@@ -116,7 +116,7 @@ public class PostfixOperations {
         return output;
     }
 
-    private static StringBuilder performOperations(CharSequence input) {
+    private static String performOperations(CharSequence input) {
         BigDecimal x, y, a, valB;
         Deque<BigDecimal> stack = new ArrayDeque<>();
         StringBuilder output = new StringBuilder();
@@ -148,7 +148,7 @@ public class PostfixOperations {
                         a = x.divide(y, 10, BigDecimal.ROUND_HALF_UP);
                     } catch (ArithmeticException e) {
                         output.append("Infinity");
-                        return output;
+                        return output.toString();
                     }
                     stack.push(a);
                 }
@@ -172,21 +172,8 @@ public class PostfixOperations {
             }
             value.delete(0, value.length());
         }
-        DecimalFormat df = new DecimalFormat();                           // TODO: change E to e
-        df.setMaximumFractionDigits(MAX_FRACTION_DIG);
-        df.setMinimumFractionDigits(0);
-        df.setGroupingUsed(false);
-        BigDecimal tmp = new BigDecimal(df.format(stack.pop().stripTrailingZeros()));
-        String[] splitter = tmp.toString().split("\\.");
-        if (splitter[0].length() > 9) {
-            Formatter formatter = new Formatter();
-            output.append(formatter.format(Locale.US, "%e", tmp));
-            String res = output.indexOf(".") < 0 ? output.toString() : output.toString().replaceAll("0*$", "").replaceAll("\\.$", "");
-            output = new StringBuilder(res);
-        } else {
-            output.append(tmp.toString());
-        }
-        return output;
+        ScientificNotationConverter converter = new ScientificNotationConverter();
+        return converter.convertToExponentialForm(stack.pop(),MAX_FRACTION_DIG);
     }
 
     private static int getOpPriority(char symbol) {

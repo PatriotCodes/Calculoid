@@ -341,7 +341,6 @@ public class MainScreen extends Activity implements View.OnClickListener {
                             inputStr.setText(tmpStr.toString());
                             inputStr.append(tmp);
                             outputStr.setText(getString(R.string.result_string, PostfixOperations.countExpression(inputStr)));
-                            //outputStr.setText("= " + performOperations(convertToPostfix(checkBrackets(inputStr.getText().toString().trim()))));
                         }
                     }
                 }
