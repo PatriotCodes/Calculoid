@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/operation_button"
+            android:background="@drawable/operation_button_big"
             android:text="@string/multiply"
             android:textColor="#ffffffff"
             android:textSize="30sp" />
@@ -225,7 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/operation_button"
+            android:background="@drawable/operation_button_big"
             android:text="@string/minus"
             android:textColor="#ffffffff"
             android:textSize="30sp" />
@@ -273,7 +273,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/operation_button"
+            android:background="@drawable/operation_button_big"
             android:text="@string/plus"
             android:textColor="#ffffffff"
             android:textSize="30sp" />
