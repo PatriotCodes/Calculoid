@@ -26,6 +26,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.renderscript.Type;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,7 +46,8 @@ public class MainScreen extends Activity implements View.OnClickListener {
     boolean firstBracket = true, bracketSet = false;
     StringBuilder tmpStr = new StringBuilder();
     private static final int VIBRATION_INTENSITY = 60;
-    private static final int MAX_DIGITS_AFTER_FPOINT = 10;
+    private static final int MAX_DIGITS_AFTER_FPOINT = 9;
+    private static final float TEXT_SIZE_DEFAULT = 100.0f;
     private MemoryOperations memory;
 
     @Override
@@ -328,10 +330,11 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.buttonEquals:
+                SetDefaultTextSize();
                 if (outputStr.length() == 0) {
                     if (!ValidityCheckers.IsWrongInput(inputStr.getText().toString())) {
                         inputStr.setText(ValidityCheckers.checkBrackets(inputStr.getText().toString()));
-                        outputStr.setText(getString(R.string.result_string, PostfixOperations.countExpression(inputStr)));
+                        outputStr.setText(ResizeText(getString(R.string.result_string, PostfixOperations.countExpression(inputStr))));
                         //outputStr.setText(convertToPostfix(inputStr.getText()));
                     } else {
                         Clear();
@@ -348,7 +351,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                             tmpStr.deleteCharAt(0);
                             inputStr.setText(tmpStr.toString());
                             inputStr.append(tmp);
-                            outputStr.setText(getString(R.string.result_string, PostfixOperations.countExpression(inputStr)));
+                            outputStr.setText(ResizeText(getString(R.string.result_string, PostfixOperations.countExpression(inputStr))));
                         }
                     }
                 }
@@ -516,5 +519,20 @@ public class MainScreen extends Activity implements View.OnClickListener {
         mSub.setTypeface(typeface);
         mReg.setTypeface(typeface);
         mClear.setTypeface(typeface);
+    }
+
+    private String ResizeText(String str) {
+        int overflow = str.length() - MAX_DIGITS_AFTER_FPOINT;
+        if (overflow > 0) {
+            for (int i = 0; i < overflow; i++) {
+                float textSize = outputStr.getTextSize();
+                outputStr.setTextSize(TypedValue.COMPLEX_UNIT_PX,outputStr.getTextSize() - 4);
+            }
+        }
+        return str;
+    }
+
+    private void SetDefaultTextSize() {
+        outputStr.setTextSize(TypedValue.COMPLEX_UNIT_PX,TEXT_SIZE_DEFAULT);
     }
 }

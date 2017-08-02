@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calculator</string>
+    <string name="app_name">PixelCalc</string>
 
     <string name="m_plus">M+</string>
     <string name="m_minus">M-</string>
