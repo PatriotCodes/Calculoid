@@ -22,8 +22,10 @@ package com.example.calculator;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.renderscript.Type;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,6 +53,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         vibe = (Vibrator) MainScreen.this.getSystemService(Context.VIBRATOR_SERVICE);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/Pixel.ttf");
 
         one = (Button) findViewById(R.id.button1);
         two = (Button) findViewById(R.id.button2);
@@ -79,8 +82,13 @@ public class MainScreen extends Activity implements View.OnClickListener {
         mReg = (Button) findViewById(R.id.buttonMReg);
         mClear = (Button) findViewById(R.id.buttonMClear);
 
+        SetTypeface(typeface);
+
         inputStr = (TextView) findViewById(R.id.input_string);
         outputStr = (TextView) findViewById(R.id.output_string);
+
+        inputStr.setTypeface(typeface);
+        outputStr.setTypeface(typeface);
 
         inputScroll = (HorizontalScrollView) findViewById(R.id.inputScrollView);
 
@@ -479,5 +487,34 @@ public class MainScreen extends Activity implements View.OnClickListener {
             return output.reverse();
         }
         return error;
+    }
+
+    private void SetTypeface(Typeface typeface) {
+        one.setTypeface(typeface);
+        two.setTypeface(typeface);
+        three.setTypeface(typeface);
+        four.setTypeface(typeface);
+        five.setTypeface(typeface);
+        six.setTypeface(typeface);
+        seven.setTypeface(typeface);
+        eight.setTypeface(typeface);
+        nine.setTypeface(typeface);
+        zero.setTypeface(typeface);
+
+        add.setTypeface(typeface);
+        sub.setTypeface(typeface);
+        mul.setTypeface(typeface);
+        div.setTypeface(typeface);
+        equal.setTypeface(typeface);
+        dot.setTypeface(typeface);
+        percent.setTypeface(typeface);
+        clear.setTypeface(typeface);
+        erase.setTypeface(typeface);
+        brackets.setTypeface(typeface);
+
+        mAdd.setTypeface(typeface);
+        mSub.setTypeface(typeface);
+        mReg.setTypeface(typeface);
+        mClear.setTypeface(typeface);
     }
 }
