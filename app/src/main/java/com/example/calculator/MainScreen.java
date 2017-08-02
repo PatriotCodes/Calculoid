@@ -25,14 +25,12 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.renderscript.Type;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -48,7 +46,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
     StringBuilder tmpStr = new StringBuilder();
     private static final int VIBRATION_INTENSITY = 60;
     private static final int MAX_DIGITS_AFTER_FPOINT = 9;
-    private static final float TEXT_SIZE_DEFAULT = 100.0f;
+    private float TEXT_SIZE_DEFAULT;
     private MemoryOperations memory;
 
     @Override
@@ -92,6 +90,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
 
         inputStr.setTypeface(typeface);
         outputStr.setTypeface(typeface);
+        TEXT_SIZE_DEFAULT = outputStr.getTextSize();
 
         inputScroll = (HorizontalScrollView) findViewById(R.id.inputScrollView);
 
@@ -523,12 +522,12 @@ public class MainScreen extends Activity implements View.OnClickListener {
         mClear.setTypeface(typeface);
     }
 
-    private String ResizeText(String str) {
+    private String ResizeText(String str) {                            // TODO: refactor, count overflow based on \n
         int overflow = str.length() - MAX_DIGITS_AFTER_FPOINT;
         if (overflow > 0) {
             for (int i = 0; i < overflow; i++) {
                 float textSize = outputStr.getTextSize();
-                outputStr.setTextSize(TypedValue.COMPLEX_UNIT_PX,outputStr.getTextSize() - 4);
+                outputStr.setTextSize(TypedValue.COMPLEX_UNIT_PX,(float)(outputStr.getTextSize() - outputStr.getTextSize() * 0.05));
             }
         }
         return str;
