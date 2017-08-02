@@ -32,6 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -427,6 +428,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                 memory.subFromMemory(outputStr.getText().toString());
                 break;
             case R.id.buttonMReg:
+                SetDefaultTextSize();
                 outputStr.setText(getString(R.string.result_string, memory.printMemory()));
                 break;
             case R.id.buttonMClear:

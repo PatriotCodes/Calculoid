@@ -1,49 +1,66 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainScreen"
-    android:background="#ff000000">
+    android:background="#ff000000"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.59"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:orientation="vertical">
 
-        <HorizontalScrollView
-            android:id="@+id/inputScrollView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:fillViewport="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.59"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <HorizontalScrollView
+                android:id="@+id/inputScrollView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:fillViewport="false">
+
+                <TextView
+                    android:id="@+id/input_string"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:textColor="#ff03ccb5"
+                    android:textSize="32sp" />
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/outputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.59"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/input_string"
-                android:layout_width="wrap_content"
+                android:id="@+id/output_string"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="right"
+                android:maxHeight="75dp"
+                android:minHeight="75dp"
                 android:textColor="#ff03ccb5"
-                android:textSize="32sp" />
-        </HorizontalScrollView>
+                android:textSize="50sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/output_string"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="right"
-            android:textColor="#ff03ccb5"
-            android:textSize="50sp"
-            android:layout_weight="0.48" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,9 +143,9 @@
 
         <Button
             android:id="@+id/buttonErase"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/erase"
             android:background="@drawable/clear_button"
             android:textSize="22sp"
@@ -143,9 +160,9 @@
 
         <Button
             android:id="@+id/button7"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/seven"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -153,9 +170,9 @@
 
         <Button
             android:id="@+id/button8"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/eight"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -163,9 +180,9 @@
 
         <Button
             android:id="@+id/button9"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/nine"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -191,9 +208,9 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/four"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -201,9 +218,9 @@
 
         <Button
             android:id="@+id/button5"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/five"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -211,9 +228,9 @@
 
         <Button
             android:id="@+id/button6"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/six"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -239,9 +256,9 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/one"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -249,9 +266,9 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/two"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -259,9 +276,9 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/three"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -287,9 +304,9 @@
 
         <Button
             android:id="@+id/brackets"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/brackets"
             android:background="@drawable/number_button"
             android:textSize="30sp"
@@ -317,9 +334,9 @@
 
         <Button
             android:id="@+id/buttonEquals"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/equals"
             android:background="@drawable/equals_button"
             android:textSize="30sp"
