@@ -179,7 +179,7 @@ public class PostfixOperations {
             value.delete(0, value.length());
         }
         ScientificNotationConverter converter = new ScientificNotationConverter();
-        return converter.convertToExponentialForm(stack.pop(),MAX_FRACTION_DIG);
+        return converter.stripTrailingZerosPost(converter.convertToExponentialForm(stack.pop(),MAX_FRACTION_DIG));
     }
 
     private static int getOpPriority(char symbol) {

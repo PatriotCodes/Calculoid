@@ -89,4 +89,25 @@ public class ScientificNotationConverter {
         return result.toString();
     }
 
+    public String stripTrailingZerosPost(String str) {
+        boolean zerosLeft = true;
+        StringBuilder tmp = new StringBuilder(str);
+        while (zerosLeft) {
+            if (tmp.length() <= 1) {
+                zerosLeft = false;
+            }
+            else if (tmp.charAt(tmp.length() - 1) == '.') {
+                tmp.deleteCharAt(tmp.length() - 1);
+                zerosLeft = false;
+            }
+            else if (tmp.charAt(tmp.length() - 1) == '0') {
+                tmp.deleteCharAt(tmp.length() - 1);
+            }
+            else {
+                zerosLeft = false;
+            }
+        }
+        return tmp.toString();
+    }
+
 }
