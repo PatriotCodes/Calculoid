@@ -47,6 +47,8 @@ public class ScientificNotationConverter {
                         result.append(splitter[1].charAt(i));
                     }
                     result.append(expValue);
+                } else {
+                    result.append(num.toString());
                 }
             } else {
                 result.append(num.toString());
