@@ -49,7 +49,7 @@ public class PostfixOperations {
                 isNegative = true;
                 i++;
             }
-            if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') { // цифру пихаем в вых. строку
+            if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') { // append character to output string
                 while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == 'E') {
                     output.append(input.charAt(i));
                     if (input.charAt(i) == 'E') {
@@ -70,18 +70,18 @@ public class PostfixOperations {
                 }
                 continue;
             }
-            if (input.charAt(i) == '(') // Откр скобка
+            if (input.charAt(i) == '(')
             {
-                stack.push(input.charAt(i)); // откр скобку пихаем в стэк
-                if (input.charAt(i + 1) == '-') { // если следующий символ '-'
+                stack.push(input.charAt(i));
+                if (input.charAt(i + 1) == '-') { // if next symbol is '-' we skip both
                     isNegative = true;
-                    i = i + 2; // пропускаем оба символа
+                    i = i + 2;
                     continue;
                 }
             }
-            if (input.charAt(i) == ')')  // closing bracket
+            if (input.charAt(i) == ')')
             {
-                while (stack.peek() != '(')  // пока не откр скобка наверху все выпихиваем в вых строку
+                while (stack.peek() != '(')  // while not an opening bracket at the top we append everything to output
                 {
                     output.append(stack.pop());
                 }

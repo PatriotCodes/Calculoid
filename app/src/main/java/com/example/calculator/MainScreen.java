@@ -335,7 +335,6 @@ public class MainScreen extends Activity implements View.OnClickListener {
                     if (!ValidityCheckers.IsWrongInput(inputStr.getText().toString())) {
                         inputStr.setText(ValidityCheckers.checkBrackets(inputStr.getText().toString()));
                         outputStr.setText(ResizeText(getString(R.string.result_string, PostfixOperations.countExpression(inputStr))));
-                        //outputStr.setText(convertToPostfix(inputStr.getText()));
                     } else {
                         Clear();
                     }

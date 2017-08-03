@@ -39,19 +39,9 @@ public class ValidityCheckers {
             }
             String buff = output.toString();
             if (output.length() != 0) {
-                //if (countSymbols(output.toString(), '(') > countSymbols(output.toString(), ')')) {
-                //for (int i = 0; i < output.length(); i++) {
-                //    if (output.charAt(i) == ')') {
-                //        for (int j = 0; j < (countSymbols(input, '(') - countSymbols(input, ')')); j++) {
-                //            output.insert(i, ')');
-                //        }
-                //        return output;
-                //    }
-                //}
                 for (int j = 0; j < (countSymbols(buff, '(') - countSymbols(buff, ')')); j++) {
                     output.insert(output.length(), ')');
                 }
-                //}
             }
         }
         return output;

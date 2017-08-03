@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package com.example.calculator;
 
 import java.math.BigDecimal;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class ScientificNotationConverter {
 
@@ -30,12 +32,22 @@ public class ScientificNotationConverter {
             if (splitter[0].length() >= MAX_FRACTION) {
                 result.append(splitter[0].charAt(0));
                 result.append(".");
-                for (int i = 1; i < MAX_FRACTION; i++) {
+                for (int i = 1; i <= MAX_FRACTION; i++) {
                     result.append(splitter[0].charAt(i));
                 }
                 result = stripTrailingZeros(result);
                 result.append("E+");
                 result.append(splitter[0].length() - 1);
+            } else if (splitter.length > 1){
+                if ((splitter[1].length() - 3) > MAX_FRACTION) {
+                    String expValue = getExponentValue(splitter[1]);
+                    result.append(splitter[0]);
+                    result.append(".");
+                    for (int i = 1; i < MAX_FRACTION; i++) {
+                        result.append(splitter[1].charAt(i));
+                    }
+                    result.append(expValue);
+                }
             } else {
                 result.append(num.toString());
             }
@@ -56,5 +68,23 @@ public class ScientificNotationConverter {
         return str;
     }
 
+    public String getExponentValue (String number) {
+        StringBuilder result = new StringBuilder();
+        Deque<Character> expVal = new ArrayDeque<Character>();
+        for (int i = number.length() - 1; i >= 0; i--) {
+            if (number.charAt(i) != 'E') {
+                expVal.push(number.charAt(i));
+            } else if (i == 0) {
+                return result.toString();
+            } else {
+                break;
+            }
+        }
+        result.append("E");
+        while (!expVal.isEmpty()) {
+            result.append(expVal.pop());
+        }
+        return result.toString();
+    }
 
 }
