@@ -181,7 +181,7 @@ public class MainScreen extends Activity implements View.OnClickListener {
                     Clear();
                 }
                 if (inputStr.length() >= 1) {
-                    if (ValidityCheckers.dotAlreadySet(inputStr.getText().toString())) {
+                    if (ValidityCheckers.symbolAlreadySet((inputStr.getText().toString()),'.')) {
                         break;
                     }
                     if (inputStr.getText().charAt(inputStr.length() - 1) == ')') {
@@ -438,8 +438,19 @@ public class MainScreen extends Activity implements View.OnClickListener {
         if (outputStr.length() != 0) {
             Clear();
         }
-        if (!Character.isDigit(inputStr.getText().charAt(inputStr.length()-1))) {
+        if (inputStr.length() == 0) {
             return;
+        }
+        if (inputStr.length() >= 1) {
+            if (ValidityCheckers.symbolAlreadySet((inputStr.getText().toString()), '%')) {
+                return;
+            }
+            if (!Character.isDigit(inputStr.getText().charAt(inputStr.length() - 1))) {
+                return;
+            }
+            if (ValidityCheckers.percentInPreviousOperand(inputStr.getText().toString())) {
+                return;
+            }
         }
         inputStr.append("%");
     }

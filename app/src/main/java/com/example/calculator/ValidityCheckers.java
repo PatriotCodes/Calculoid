@@ -94,9 +94,9 @@ public class ValidityCheckers {
         return false;
     }
 
-    public static boolean dotAlreadySet(String input) {
+    public static boolean symbolAlreadySet(String input, char symbol) {
         for (int i = input.length()- 1; i >= 0; i--) {
-            if (input.charAt(i) == '.') {
+            if (input.charAt(i) == symbol) {
                 return true;
             }
             if (checkOperatorCoins(input.charAt(i))) {
@@ -128,5 +128,9 @@ public class ValidityCheckers {
             digits++;
         }
         return digits;
+    }
+
+    public static boolean percentInPreviousOperand(String input) {   // TODO: implement
+        return false;
     }
 }

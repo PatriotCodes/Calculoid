@@ -168,9 +168,11 @@ public class PostfixOperations {
                 } else {
                     valB = new BigDecimal(value.toString());
                 }
-                if (input.charAt(i + 1) == '!') {
-                    valB = valB.negate();
-                    i++;
+                if ((input.length() - 1) > i) {
+                    if (input.charAt(i + 1) == '!') {
+                        valB = valB.negate();
+                        i++;
+                    }
                 }
                 stack.push(valB);
             }
