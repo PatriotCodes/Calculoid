@@ -49,8 +49,8 @@ public class PostfixOperations {
                 isNegative = true;
                 i++;
             }
-            if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.') { // append character to output string
-                while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == 'E') {
+            if (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == '%') { // append character to output string
+                while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.' || input.charAt(i) == 'E' || input.charAt(i) == '%') {
                     output.append(input.charAt(i));
                     if (input.charAt(i) == 'E') {
                         i++;
@@ -163,7 +163,11 @@ public class PostfixOperations {
                     value.append(input.charAt(i));
                     i++;
                 }
-                valB = new BigDecimal(value.toString());
+                if (stack.size() > 0) {
+                    valB = checkPercent(value.toString(),stack.peek());
+                } else {
+                    valB = new BigDecimal(value.toString());
+                }
                 if (input.charAt(i + 1) == '!') {
                     valB = valB.negate();
                     i++;
@@ -194,6 +198,19 @@ public class PostfixOperations {
                 return 1;
             default:
                 return 0;
+        }
+    }
+
+    private static BigDecimal checkPercent(String number,BigDecimal x) {
+        if (number.charAt(number.length() - 1) == '%') {
+            StringBuilder yStr = new StringBuilder(number);
+            yStr.deleteCharAt(yStr.length() - 1);
+            BigDecimal y = new BigDecimal(yStr.toString());
+            BigDecimal oneHundred = new BigDecimal(100);
+            y = (x.divide(oneHundred)).multiply(y);
+            return y;
+        } else {
+            return new BigDecimal(number);
         }
     }
 }

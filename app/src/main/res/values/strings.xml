@@ -25,7 +25,7 @@
     <string name="plus">+</string>
     <string name="multiply">*</string>
     <string name="equals">=</string>
-    <string name="erase">-x</string>
+    <string name="erase">CL</string>
     <string name="brackets">( )</string>
     <string name="action_settings">Settings</string>
 
