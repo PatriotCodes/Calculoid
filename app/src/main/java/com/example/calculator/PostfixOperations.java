@@ -145,7 +145,7 @@ public class PostfixOperations {
                     y = stack.pop();
                     x = stack.pop();
                     try {
-                        a = x.divide(y, 10, BigDecimal.ROUND_HALF_UP);
+                        a = x.divide(y,MAX_FRACTION_DIG,BigDecimal.ROUND_HALF_UP).stripTrailingZeros();
                     } catch (ArithmeticException e) {
                         output.append("Infinity");
                         return output.toString();
@@ -166,7 +166,7 @@ public class PostfixOperations {
                 if (stack.size() > 0) {
                     valB = checkPercent(value.toString(),stack.peek());
                 } else {
-                    valB = new BigDecimal(value.toString());
+                    valB = checkPercentOneOperand(value.toString());
                 }
                 if ((input.length() - 1) > i) {
                     if (input.charAt(i + 1) == '!') {
@@ -211,6 +211,19 @@ public class PostfixOperations {
             BigDecimal oneHundred = new BigDecimal(100);
             y = (x.divide(oneHundred)).multiply(y);
             return y;
+        } else {
+            return new BigDecimal(number);
+        }
+    }
+
+    private static BigDecimal checkPercentOneOperand(String number) {
+        String[] splitter = number.split("%");
+        if (splitter.length > 1) {
+            BigDecimal x = new BigDecimal(splitter[0]);
+            BigDecimal y = new BigDecimal(splitter[1]);
+            BigDecimal oneHundred = new BigDecimal(100);
+            BigDecimal result = (y.divide(oneHundred,MAX_FRACTION_DIG,BigDecimal.ROUND_HALF_UP)).multiply(x).stripTrailingZeros();
+            return result;
         } else {
             return new BigDecimal(number);
         }

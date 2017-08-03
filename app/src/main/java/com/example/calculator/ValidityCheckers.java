@@ -95,13 +95,17 @@ public class ValidityCheckers {
     }
 
     public static boolean symbolAlreadySet(String input, char symbol) {
-        for (int i = input.length()- 1; i >= 0; i--) {
-            if (input.charAt(i) == symbol) {
-                return true;
+        if (input.length() != 0) {
+            for (int i = input.length() - 1; i >= 0; i--) {
+                if (input.charAt(i) == symbol) {
+                    return true;
+                }
+                if (checkOperatorCoins(input.charAt(i))) {
+                    return false;
+                }
             }
-            if (checkOperatorCoins(input.charAt(i))) {
-                return false;
-            }
+        } else {
+            return false;
         }
         return false;
     }
