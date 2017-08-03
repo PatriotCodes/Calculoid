@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/memory_button"
+                android:background="@drawable/memory_button_image_selector"
                 android:text="@string/m_plus"
                 android:textSize="22sp" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/memory_button"
+                android:background="@drawable/memory_button_image_selector"
                 android:text="@string/m_minus"
                 android:textSize="22sp" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/memory_button"
+                android:background="@drawable/memory_button_image_selector"
                 android:text="@string/m_r"
                 android:textSize="22sp" />
 
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/memory_button"
+                android:background="@drawable/memory_button_image_selector"
                 android:text="@string/m_c"
                 android:textSize="22sp" />
 
@@ -122,7 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/clear_button"
+                android:background="@drawable/clear_button_image_selector"
                 android:text="@string/c"
                 android:textColor="#ffffffff"
                 android:textSize="22sp" />
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
+                android:background="@drawable/operation_button_image_selector"
                 android:text="@string/percent"
                 android:textColor="#ffffffff"
                 android:textSize="22sp" />
@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
+                android:background="@drawable/operation_button_image_selector"
                 android:text="@string/divide"
                 android:textColor="#ffffffff"
                 android:textSize="22sp" />
@@ -152,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/clear_button"
+                android:background="@drawable/clear_button_image_selector"
                 android:text="@string/erase"
                 android:textColor="#ffffffff"
                 android:textSize="22sp" />
@@ -169,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/one"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -179,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/two"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -189,7 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/three"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -199,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button_big"
+                android:background="@drawable/operation_button_big_image_selector"
                 android:text="@string/plus"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -217,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/four"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -227,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/five"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -237,7 +237,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/six"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -247,7 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button_big"
+                android:background="@drawable/operation_button_big_image_selector"
                 android:text="@string/minus"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -265,7 +265,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/seven"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -275,7 +275,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/eight"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -285,7 +285,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/nine"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -295,7 +295,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button_big"
+                android:background="@drawable/operation_button_big_image_selector"
                 android:text="@string/multiply"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -313,7 +313,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/brackets"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -323,7 +323,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/zero"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -333,7 +333,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:background="@drawable/number_button_image_selector"
                 android:text="@string/dot"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
@@ -343,7 +343,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/equals_button"
+                android:background="@drawable/equals_button_image_selector"
                 android:text="@string/equals"
                 android:textColor="#ffffffff"
                 android:textSize="30sp" />
